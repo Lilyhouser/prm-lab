@@ -1,10 +1,10 @@
 {
   "roots": [
-    "prm_lab"
+    "prm393_lab"
   ],
   "packages": [
     {
-      "name": "prm_lab",
+      "name": "prm393_lab",
       "version": "1.0.0+1",
       "dependencies": [
         "cupertino_icons",

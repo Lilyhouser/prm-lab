@@ -1,14 +1,19 @@
-import 'package:prm_lab/entities/Product.dart';
+import 'package:flutter/material.dart';
+import 'package:prm393_lab/pages/home_page.dart';
 
 void main() {
-  Product product = Product.fromJson({
-    "name": "Lily House",
-    "price": 120000.0,
-    "image": "img",
-    "id": 0
-  });
-  // product.printProduct();
-  product.increasePriceBy10Percent();
-  print("----------------------");
-  product.printListProduct();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+      title: "Lily Lab 4",
+    );
+  }
 }
