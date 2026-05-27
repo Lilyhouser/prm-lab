@@ -51,7 +51,7 @@ class _InputControlsDemoState extends State<InputControlsDemo> {
           spacing: 12,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               "Rating (Slider)",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
@@ -66,14 +66,14 @@ class _InputControlsDemoState extends State<InputControlsDemo> {
               },
             ),
             Text("Current value: ${rating.toInt()}"),
-            Text(
+            const Text(
               "Active (Switch)",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Is movie active?"),
+                const Text("Is movie active?"),
                 Switch(
                   value: isActive,
                   onChanged: (value) {
@@ -96,7 +96,7 @@ class _InputControlsDemoState extends State<InputControlsDemo> {
                   selectedGenre = value;
                 });
               },
-              child: Column(
+              child: const Column(
                 children: [
                   RadioListTile(title: Text("Action"), value: "Action"),
                   RadioListTile(title: Text("Comedy"), value: "Comedy"),
@@ -112,7 +112,7 @@ class _InputControlsDemoState extends State<InputControlsDemo> {
               ),
             ),
 
-            if (selectedDate != null) Text("Selected date: ${selectedDate}"),
+            if (selectedDate != null) Text("Selected date: $selectedDate"),
           ],
         ),
       ),

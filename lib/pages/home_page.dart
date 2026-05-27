@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prm393_lab/entities/ui/ExerciseCard.dart';
 import 'package:prm393_lab/pages/core_widget_demo.dart';
 import 'package:prm393_lab/pages/input_controls_demo.dart';
+import 'package:prm393_lab/pages/layout_demo.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
       {
         "title": "Exercise 3",
         "description": "Layout Demo",
-        "page": const CoreWidget(),
+        "page": const LayoutDemo(),
       },
       {
         "title": "Exercise 4",
