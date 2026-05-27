@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prm393_lab/entities/ui/ExerciseCard.dart';
 import 'package:prm393_lab/pages/core_widget_demo.dart';
+import 'package:prm393_lab/pages/input_controls_demo.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
       {
         "title": "Exercise 2",
         "description": "Input Control Demo",
-        "page": const CoreWidget(),
+        "page": const InputControlsDemo(),
       },
       {
         "title": "Exercise 3",
