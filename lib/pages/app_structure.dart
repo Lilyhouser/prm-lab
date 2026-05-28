@@ -77,6 +77,5 @@ class AppStructureBody extends StatelessWidget {
         child: Text("This is a simple screen with theme toggle"),
       ),
     );
-    ;
   }
 }

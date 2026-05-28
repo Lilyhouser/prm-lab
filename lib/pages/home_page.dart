@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prm393_lab/entities/ui/ExerciseCard.dart';
 import 'package:prm393_lab/pages/app_structure.dart';
+import 'package:prm393_lab/pages/common_ui_fixes.dart';
 import 'package:prm393_lab/pages/core_widget_demo.dart';
 import 'package:prm393_lab/pages/input_controls_demo.dart';
 import 'package:prm393_lab/pages/layout_demo.dart';
@@ -34,7 +35,7 @@ class HomePage extends StatelessWidget {
       {
         "title": "Exercise 5",
         "description": "Common UI Fixes",
-        "page": const CoreWidget(),
+        "page": const CommonUiFixes(),
       },
     ];
 
