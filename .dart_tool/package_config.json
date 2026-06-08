@@ -56,6 +56,12 @@
       "languageVersion": "3.8"
     },
     {
+      "name": "flutter_staggered_grid_view",
+      "rootUri": "file:///C:/Users/Admin/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_staggered_grid_view-0.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///D:/Apps/flutter_windows_3.41.9-stable/flutter/packages/flutter_test",
       "packageUri": "lib/",
