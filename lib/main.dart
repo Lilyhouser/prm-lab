@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:prm393_lab/entities/ui/ResponsiveMovieApp.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prm393_lab/entities/ui/BottomNavigation.dart';
+// import 'package:prm393_lab/entities/ui/ResponsiveMovieApp.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ResponsiveMovieApp(),
+      home: BottomNavigation(),
       title: "Lily Lab 4",
     );
   }

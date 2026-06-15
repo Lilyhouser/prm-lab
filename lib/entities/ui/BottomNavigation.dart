@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prm393_lab/pages/cart.dart';
 import 'package:prm393_lab/pages/product_list.dart';
+import 'package:prm393_lab/shares/system_provider.dart';
 
-class BottomNavigation extends StatefulWidget {
+class BottomNavigation extends ConsumerStatefulWidget {
   const BottomNavigation({super.key});
 
   @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
+  ConsumerState<BottomNavigation> createState() => _BottomNavigationState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _BottomNavigationState extends ConsumerState<BottomNavigation> {
   int _selectedIndex = 0;
-  final List<Widget> pages = [ProductList(), Text("Setting"), Text("Profile")];
+  final titles = ["Product List", "My Cart", "Profile"];
+  final List<Widget> pages = [ProductList(), CartPage(), Text("Profile")];
 
   @override
   Widget build(BuildContext context) {
+    final cartLength = ref.watch(myCartProvider).length;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.brown,
         foregroundColor: Colors.white,
-        title: Text("Lily House"),
+        title: Text(titles[_selectedIndex]),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
       ),
       body: pages[_selectedIndex],
@@ -33,7 +38,34 @@ class _BottomNavigationState extends State<BottomNavigation> {
         currentIndex: _selectedIndex,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
+          BottomNavigationBarItem(
+            icon: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                const Icon(Icons.shopping_cart_outlined),
+                if (cartLength > 0)
+                  Positioned(
+                    right: -6,
+                    top: -6,
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: const BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Text(
+                        cartLength.toString(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            label: "Cart",
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
       ),

@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prm393_lab/entities/ui/Product.dart';
 import 'package:prm393_lab/pages/product_detail.dart';
+import 'package:prm393_lab/shares/system_provider.dart';
 
-class ProductWidget extends StatefulWidget {
+class ProductWidget extends ConsumerStatefulWidget {
   final Product product;
 
   const ProductWidget({super.key, required this.product});
 
   @override
-  State<ProductWidget> createState() => _ProductWidgetState();
+  ConsumerState<ProductWidget> createState() => _ProductWidgetState();
 }
 
-class _ProductWidgetState extends State<ProductWidget> {
-  bool isFavourite = false;
-
+class _ProductWidgetState extends ConsumerState<ProductWidget> {
   @override
   Widget build(BuildContext context) {
+    final cart = ref.watch(myCartProvider);
+    final bool isFavourite = cart.contains(widget.product);
+
     return InkWell(
       onTap: () {
+        ref.read(selectedProduct.notifier).state = widget.product;
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (_) => ProductDetail(product: widget.product),
-          ),
+          MaterialPageRoute(builder: (_) => ProductDetail()),
         );
       },
       child: Card(
@@ -50,9 +52,12 @@ class _ProductWidgetState extends State<ProductWidget> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() {
-                          isFavourite = !isFavourite;
-                        });
+                        final cart = ref.read(myCartProvider.notifier);
+                        if (isFavourite) {
+                          cart.remove(widget.product);
+                        } else {
+                          cart.add(widget.product);
+                        }
                       },
                       icon: Icon(
                         Icons.favorite,
@@ -68,7 +73,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      widget.product.name,
+                      widget.product.name ?? "",
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,

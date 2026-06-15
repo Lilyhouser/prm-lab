@@ -1,8 +1,8 @@
 class Product {
-  final int id;
-  String name;
+  final int? id;
+  String? name;
   String? image;
-  double price;
+  double? price;
   String? description;
 
   static List<Product> products = [
@@ -54,13 +54,7 @@ class Product {
     );
   }
 
-  Product({
-    required this.id,
-    required this.name,
-    required this.image,
-    required this.price,
-    required this.description,
-  });
+  Product({this.id, this.name, this.image, this.price, this.description});
 
   void addProduct({
     required int id,
@@ -89,7 +83,7 @@ class Product {
   List<Product> searchByName({required String search}) {
     List<Product> searchList = [];
     searchList = products
-        .where((e) => (e.name.toLowerCase()).contains(search.toLowerCase()))
+        .where((e) => (e.name!.toLowerCase()).contains(search.toLowerCase()))
         .toList();
     return searchList;
   }
@@ -103,12 +97,12 @@ class Product {
 
     if (max != null && min != null) {
       searchList = products
-          .where((e) => e.price >= min && e.price <= max)
+          .where((e) => e.price! >= min && e.price! <= max)
           .toList();
     } else if (max != null) {
-      searchList = products.where((e) => e.price <= max).toList();
+      searchList = products.where((e) => e.price! <= max).toList();
     } else if (min != null) {
-      searchList = products.where((e) => e.price >= min).toList();
+      searchList = products.where((e) => e.price! >= min).toList();
     }
     return searchList;
   }
@@ -119,7 +113,7 @@ class Product {
           (e) => (Product(
             id: e.id,
             name: e.name,
-            price: (e.price * 1.1).roundToDouble(),
+            price: (e.price! * 1.1).roundToDouble(),
             image: e.image,
             description: description,
           )),
